@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HomiBoom</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-blue-600 text-white p-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold">HomiBoom</h1>
+    <button id="cart-btn" class="relative" aria-label="Shopping Cart">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2"
+           viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round"
+              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m5-9v9m4-9v9m5-9l2 9"/>
+      </svg>
+      <span id="cart-count"
+            class="absolute top-0 right-0 bg-red-600 text-white text-xs rounded-full px-1.5">
+        0
+      </span>
+    </button>
+  </header>
+
+  <!-- Main content -->
+  <main class="flex-grow max-w-5xl mx-auto p-4">
+    <h2 class="text-xl font-semibold mb-4">Products</h2>
+
+    <div id="product-list" class="space-y-4">
+
+      <div class="bg-white rounded shadow flex items-center p-4 space-x-6 hover:shadow-lg transition cursor-pointer">
+        <img src="https://via.placeholder.com/100" alt="Product 1" class="w-24 h-24 object-cover rounded" />
+        <div class="flex-grow">
+          <h3 class="font-semibold text-lg">Product 1</h3>
+          <p class="text-gray-600">Availability: <span class="text-green-600">In Stock</span></p>
+          <p class="text-blue-700 font-bold mt-1">€29.99</p>
+        </div>
+        <button class="add-to-cart-btn bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+          Add to Cart
+        </button>
+      </div>
+
+      <div class="bg-white rounded shadow flex items-center p-4 space-x-6 hover:shadow-lg transition cursor-pointer">
+        <img src="https://via.placeholder.com/100" alt="Product 2" class="w-24 h-24 object-cover rounded" />
+        <div class="flex-grow">
+          <h3 class="font-semibold text-lg">Product 2</h3>
+          <p class="text-gray-600">Availability: <span class="text-red-600">Out of Stock</span></p>
+          <p class="text-blue-700 font-bold mt-1">€59.99</p>
+        </div>
+        <button disabled class="bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">
+          Out of Stock
+        </button>
+      </div>
+
+      <div class="bg-white rounded shadow flex items-center p-4 space-x-6 hover:shadow-lg transition cursor-pointer">
+        <img src="https://via.placeholder.com/100" alt="Product 3" class="w-24 h-24 object-cover rounded" />
+        <div class="flex-grow">
+          <h3 class="font-semibold text-lg">Product 3</h3>
+          <p class="text-gray-600">Availability: <span class="text-green-600">In Stock</span></p>
+          <p class="text-blue-700 font-bold mt-1">€12.49</p>
+        </div>
+        <button class="add-to-cart-btn bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+          Add to Cart
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="bg-gray-200 text-center p-4 text-gray-600">
+    &copy; 2025 HomiBoom
+  </footer>
+
+  <script>
+    const cartCountElem = document.getElementById('cart-count');
+    const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+
+    let cartCount = 0;
+
+    addToCartButtons.forEach(button => {
+      button.addEventListener('click', e => {
+        e.stopPropagation();
+        cartCount++;
+        cartCountElem.textContent = cartCount;
+        alert('Added to cart!');
+      });
+    });
+  </script>
+
+</body>
+</html>
